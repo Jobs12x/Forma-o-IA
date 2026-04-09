@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stack 2025 Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #6a0dad; /* purple */
+        }
+        .card {
+            background: linear-gradient(to right, #6a0dad, #8a2be2); /* violet */
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .filter {
+            margin: 20px 0;
+        }
+        /* Chart styles */
+        canvas {
+            width: 100% !important;
+            height: 400px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Stack 2025 Dashboard</h1>
+        <div class="filter">
+            <label for="search">Search:</label>
+            <input type="text" id="search" placeholder="Search..." oninput="searchFunction()">
+        </div>
+        <div class="card">
+            <h2>Distribution Analysis</h2>
+            <canvas id="distributionChart"></canvas>
+        </div>
+        <div class="card">
+            <h2>Category Analysis</h2>
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+    <script>
+        const ctxDistribution = document.getElementById('distributionChart').getContext('2d');
+        const distributionChart = new Chart(ctxDistribution, {
+            type: 'bar',
+            data: {
+                labels: ['AI', 'ML', 'NLP', 'Robotics'],
+                datasets: [{
+                    label: 'Distribution',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: 'rgba(255, 215, 0, 0.8)', /* golden */
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        const ctxCategory = document.getElementById('categoryChart').getContext('2d');
+        const categoryChart = new Chart(ctxCategory, {
+            type: 'pie',
+            data: {
+                labels: ['AI', 'ML', 'NLP'],
+                datasets: [{
+                    label: 'Category Analysis',
+                    data: [30, 50, 20],
+                    backgroundColor: ['#6a0dad', '#8a2be2', '#ffd700'], /* purple, violet, golden */
+                }]
+            },
+        });
+
+        function searchFunction() {
+            const input = document.getElementById('search');
+            const filter = input.value.toLowerCase();
+            // Implement real-time search functionality here
+            console.log('Searching for:', filter);
+        }
+    </script>
+</body>
+</html>
